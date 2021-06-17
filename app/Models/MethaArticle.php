@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class MethaArticle extends Model
 {
+    protected $table = 'metha_articles';
     use HasFactory;
+
+    public function article(){
+        return $this->belongsTo('App\Article');
+    }
 }

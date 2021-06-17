@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
+    protected $fillable = ['year','finished_time','name','is_deleted'];
+    protected $primaryKey = 'year';
+    protected $keyType = 'year';
+    protected $incrementing = false;
     use HasFactory;
+
+    public function posts(){
+        return $this->hasMany('App\Post');
+    }
 }
