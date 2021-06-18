@@ -15,8 +15,53 @@
     </title>
 </head>
 <body>
-    <div class="container container-fluid">
-    @yield('content')
+    <div class="container-fluid">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            
+            <div class="d-flex justify-content-between collapse navbar-collapse" >
+              <div  class="d-flex ">
+                <a class="navbar-brand mx-4" href="#">انجمن علمی کامپیوتر</a>
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                    <a class="nav-link" href="#">خانه</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">مطالب</a>
+                    </li>
+                </ul>
+              </div>
+              <ul class="navbar-nav  mt-2 mt-lg-0 mx-4">
+                  @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            @php
+                               echo auth()->user()->name_first." ".auth()->user()->name_last;
+                            @endphp
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">خروج</a>
+                    </li>
+                  @endauth
+                  @guest
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">ورود</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">ثبت نام</a>
+                    </li>
+                  @endguest
+                    
+                
+                
+                
+              </ul>
+            </div>
+        </nav>
+
+        
+        @yield('content')
 
     </div>
     <script src="{{url('bootstrap/js/jquery.min.js')}}"></script>
