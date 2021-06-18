@@ -21,8 +21,10 @@ class User extends Authenticatable
         'name_last',
         'email',
         'password',
+        'student_number',
+        'type',
     ];
-
+// $miu = User::create(['name_first'=>'sahar','name_last'=>'sadri','email'=>'sahar@mio.com','password'=>'123321123','student_number'=>'961845125','type'=>1]);
     /**
      * The attributes that should be hidden for arrays.
      *

@@ -1,0 +1,10 @@
+.border-red-500{
+    border-width: 500;
+    border-color: red;
+    
+}
+
+.text-red-500{
+    font-weight: 300;
+    color: red;
+}
