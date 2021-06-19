@@ -46,7 +46,7 @@
                   @endauth
                   @guest
                   <li class="nav-item">
-                    <a class="nav-link" href="#">ورود</a>
+                    <a class="nav-link" href="{{ route('login') }}">ورود</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('register') }}">ثبت نام</a>

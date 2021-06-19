@@ -6,5 +6,5 @@
 
 .text-red-500{
     font-weight: 300;
-    color: red;
+    color: red !important;
 }
