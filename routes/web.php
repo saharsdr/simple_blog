@@ -33,3 +33,6 @@ Route::get('/', function () {
 Route::get('/how', function () {
     return view('users.poll');
 });
+Route::get('/hom', function () {
+    return view('users.article');
+});
