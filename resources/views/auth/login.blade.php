@@ -24,9 +24,9 @@
             @endif
             <form action="{{ route('login') }}" method="POST">
                 @csrf
-                <div class="mb-3">
-                    <label for="email" class="form-label sr-only">ایمیل</label>
+                <div class="form-floating mb-3">
                     <input type="email" class="form-control bg-light border-2  p-4  @error('email') border-red-500 @enderror" name="email" id="email" placeholder="ایمیل خود را وارد کنید">
+                    <label for="email" class="rtl">ایمیل</label>
                     
                     @error('email')
                         <div class="ltr text-red-500 text-muted fs-6 mt-2">
@@ -34,9 +34,10 @@
                         </div>
                     @enderror
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label sr-only">رمز</label>
+                
+                <div class="form-floating mb-3">
                     <input type="password" class="form-control bg-light border-2  p-4  @error('password') border-red-500 @enderror" name="password" id="password" placeholder="رمز را وارد کنید">
+                    <label for="password" class="rtl">رمز</label>
                     
                     @error('password')
                         <div class="ltr text-red-500 text-muted fs-6 mt-2">

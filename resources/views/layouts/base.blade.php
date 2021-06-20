@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{url('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{url('css/base.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url('fontawsome/css/all.css')}}" rel="stylesheet" type="text/css">
+
     @yield('links')
 
     

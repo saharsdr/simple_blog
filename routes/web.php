@@ -30,3 +30,6 @@ Route::post('/register',[RegisterController::class,'store']);
 Route::get('/', function () {
     return view('users.home');
 });
+Route::get('/how', function () {
+    return view('users.poll');
+});
