@@ -5,7 +5,7 @@
 
 
 @section('page_title')
-    Article
+    Make a Article
 @endsection
 
 @section('content')

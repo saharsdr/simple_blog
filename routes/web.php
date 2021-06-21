@@ -39,3 +39,6 @@ Route::get('/hom', function () {
 Route::get('/new/article', function () {
     return view('users.new_article');
 });
+Route::get('/new/poll', function () {
+    return view('users.new_poll');
+});
