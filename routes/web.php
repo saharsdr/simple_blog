@@ -36,3 +36,6 @@ Route::get('/how', function () {
 Route::get('/hom', function () {
     return view('users.article');
 });
+Route::get('/new/article', function () {
+    return view('users.new_article');
+});

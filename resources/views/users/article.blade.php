@@ -95,5 +95,5 @@
             </form>
         </div>
     </div>
-    
+    ckeditor5-build-classic
 @endsection

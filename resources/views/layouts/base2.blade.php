@@ -43,5 +43,6 @@
     <script src="{{url('bootstrap/js/jquery.min.js')}}"></script>
     <script src="{{url('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{url('bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{url('js/script.js')}}"></script>
 </body>
 </html>
