@@ -42,3 +42,6 @@ Route::get('/new/article', function () {
 Route::get('/new/poll', function () {
     return view('users.new_poll');
 });
+Route::get('/edit/poll', function () {
+    return view('users.edit_poll');
+});
