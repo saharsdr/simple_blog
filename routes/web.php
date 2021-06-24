@@ -45,3 +45,6 @@ Route::get('/new/poll', function () {
 Route::get('/edit/poll', function () {
     return view('users.edit_poll');
 });
+Route::get('/profile', function () {
+    return view('users.profile');
+});
