@@ -43,7 +43,10 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}">خروج</a>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button class="nav-link" type="submit">خروج</button>                        
+                        </form>
                     </li>
                   @endauth
                   @guest
