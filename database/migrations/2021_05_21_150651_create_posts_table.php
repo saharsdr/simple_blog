@@ -22,7 +22,6 @@ class CreatePostsTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->year('group_id');
             $table->foreign('group_id')->references('year')->on('groups');
-            // $table->foreignId('group_id')->constrained();
             $table->boolean('is_deleted')->default(0);
         });
     }

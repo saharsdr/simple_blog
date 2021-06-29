@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class VoteChoise extends Model
 {
-    protected $table = 'voice_choises';
+    protected $table = 'vote_choises';
     use HasFactory;
 
     public function poll(){
-        return $this->belongsTo('App\Poll');
+        return $this->belongsTo('App\Models\Poll');
     }
 
     public function votes(){
