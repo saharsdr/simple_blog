@@ -13,10 +13,10 @@ class Article extends Model
     protected $guarded = ['id','updated_at','created_at'];
 
     public function post(){
-        return $this->belongsTo('App\Post');
+        return $this->belongsTo('App\Models\Post');
     }
 
     public function methaarticles(){
-        return $this->hasMany('App\MethaArticle');
+        return $this->hasMany('App\Models\MethaArticle');
     }
 }

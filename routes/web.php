@@ -34,9 +34,7 @@ Route::post('/new/poll', [PollController::class,'store']);
 Route::get('/', function () {
     return view('users.home');
 });
-Route::get('/how', function () {
-    return view('users.poll');
-});
+Route::get('/poll/{id}', [PollController::class,'detail']);
 
 Route::get('/hom', function () {
     return view('users.article');

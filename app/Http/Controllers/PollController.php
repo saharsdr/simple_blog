@@ -14,8 +14,12 @@ class PollController extends Controller
         return view('users.new_poll');
     }
 
+    public function detail(Poll $id){
+        $choises=$id->votechoises;
+        return view('users.poll',['id'=>$id , 'choises'=>$choises]);
+    }
 
-    // Poll::create('is_active'=>'1','description'=>'hello this is description','title'=>'poll one','po
+    
     public function store(Request $req){
         //
         $user_id=Auth::user()->id;

@@ -45,15 +45,15 @@ class User extends Authenticatable
     ];
 
     public function likes(){
-        return $this->hasMany('App\Like');
+        return $this->hasMany('App\Models\Like');
     }
     public function comments(){
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\Models\Comment');
     }
     public function posts(){
-        return $this->hasMany('App\Post');
+        return $this->hasMany('App\Models\Post');
     }
     public function votes(){
-        return $this->hasMany('App\Vote');
+        return $this->hasMany('App\Models\Vote');
     }
 }

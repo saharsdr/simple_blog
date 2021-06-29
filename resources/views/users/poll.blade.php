@@ -7,36 +7,42 @@
 @section('content')
     <div class="d-flex justify-content-center mt-5 mb-3 " >
         <h1>
-            This is title of the poll
+            {{ $id->title }}
         </h1>
     </div>
     <div class="px-5 d-flex justify-content-center">
         <p class="text-muted fs-5">
-            Time
+            {{ $id->created_at }}
         </p>
     </div>
     <div class=" w-100 px-5 d-flex justify-content-center">
         <div class="w-75 text-justify">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, officiis! Cupiditate sequi reprehenderit, cum, distinctio nam non ipsam reiciendis doloremque minima, facere voluptatem magni. Nemo enim doloribus sit at aliquam.
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic quod porro nostrum obcaecati. Sunt aut, magni, tenetur inventore voluptas earum dolorem culpa repellendus incidunt eius non eveniet explicabo sapiente sit.
-                </p>
+            <p>{{ $id->description }}</p>
         </div>
     </div>
     <div  class="w-100 px-5 pb-5 d-flex justify-content-center">
         <div class="w-50 text-justify pt-5 mt-4">
             <form action="" method="post">
-                <div class="form-check shadow p-3 mb-3 bg-body rounded">
+                {{-- <div class="form-check shadow p-3 mb-3 bg-body rounded">
                     <input class="float-right form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                     <label class="form-check-label px-4" for="flexRadioDefault1">
                       مورد اول
                     </label>
-                  </div>
-                  <div class="form-check shadow p-3 mb-3 bg-body rounded">
+                </div> --}}
+                @foreach ($choises as $choise)
+                    <div class="form-check shadow p-3 mb-3 bg-body rounded">
+                        <input class="float-right form-check-input" type="radio" name="choise_id[]" id="{{$choise->id}}">
+                        <label class="form-check-label px-4" for="{{$choise->id}}">
+                            {{$choise->choise}}
+                        </label>
+                    </div>
+                @endforeach
+                  {{-- <div class="form-check shadow p-3 mb-3 bg-body rounded">
                     <input class="float-right form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
                     <label class="form-check-label px-4" for="flexRadioDefault2">
                       مورد دوم
                     </label>
-                  </div>
+                  </div> --}}
                   {{-- @auth --}}
                   <div class="d-flex align-items-baseline justify-content-between">
                       <input type="submit" class="btn btn-primary mt-3 mx-3" value="ثبت رای">

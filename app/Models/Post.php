@@ -10,26 +10,26 @@ class Post extends Model
     use HasFactory;
 
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
     
     public function poll(){
-        return $this->hasOne('App\Poll');
+        return $this->hasOne('App\Models\Poll');
     }
 
     public function article(){
-        return $this->hasOne('App\Article');
+        return $this->hasOne('App\Models\Article');
     }
 
     public function group(){
-        return $this->belongsTo('App\Group', 'group_id', 'year');
+        return $this->belongsTo('App\Models\Group', 'group_id', 'year');
     }
 
     public function likes(){
-        return $this->hasMany('App\Like');
+        return $this->hasMany('App\Models\Like');
     }
     
     public function comments(){
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\Models\Comment');
     }
 }
