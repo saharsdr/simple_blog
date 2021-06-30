@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LoguotController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PollController;
 use Illuminate\Support\Facades\Route;
@@ -35,9 +36,11 @@ Route::get('/', function () {
     return view('users.home');
 });
 Route::get('/poll/{id}', [PollController::class,'detail']);
+Route::post('poll/{id}',[CommentController::class,'new_comment'])->name('new_comment');
 
 Route::get('/edit/poll/{id}', [PollController::class,'editable']);
 Route::post('/edit/poll/{id}', [PollController::class,'edit'])->name('edit');
+
 
 Route::get('/hom', function () {
     return view('users.article');
