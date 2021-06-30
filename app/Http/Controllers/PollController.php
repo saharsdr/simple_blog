@@ -19,7 +19,41 @@ class PollController extends Controller
         return view('users.poll',['id'=>$id , 'choises'=>$choises]);
     }
 
+    public function editable(Poll $id){
+        $choises=$id->votechoises;
+        return view('users.edit_poll',['id'=>$id , 'choises'=>$choises]);
+    }
     
+    public function edit(Request $req , Poll $id){
+        $this->validate($req,[
+            'title'=>'required|max:500'
+        ]);
+        $id->title=$req->title;
+        $id->description=$req->text_area;
+        $id->save();
+        
+        if ($req->choise_new !== null) {
+            foreach($req->choise_new as $newCh){
+                $voteCh=new VoteChoise;
+                $voteCh->poll_id=$id->id;
+                $voteCh->choise=$newCh;
+                $voteCh->save();                
+            }
+        }
+        
+        if ($req->choise_del !== null) {
+            $vote_choises=VoteChoise::all();
+            foreach($req->choise_del as $delCh){
+                $delMe=$vote_choises->where('poll_id',$id->id)->where('choise',$delCh)->first();
+                if($delMe!==null){
+                    $delMe->delete();
+                }
+            }
+        }
+        
+        return back();
+    }
+
     public function store(Request $req){
         //
         $user_id=Auth::user()->id;

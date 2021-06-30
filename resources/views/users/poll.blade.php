@@ -23,12 +23,6 @@
     <div  class="w-100 px-5 pb-5 d-flex justify-content-center">
         <div class="w-50 text-justify pt-5 mt-4">
             <form action="" method="post">
-                {{-- <div class="form-check shadow p-3 mb-3 bg-body rounded">
-                    <input class="float-right form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label px-4" for="flexRadioDefault1">
-                      مورد اول
-                    </label>
-                </div> --}}
                 @foreach ($choises as $choise)
                     <div class="form-check shadow p-3 mb-3 bg-body rounded">
                         <input class="float-right form-check-input" type="radio" name="choise_id[]" id="{{$choise->id}}">
@@ -37,12 +31,7 @@
                         </label>
                     </div>
                 @endforeach
-                  {{-- <div class="form-check shadow p-3 mb-3 bg-body rounded">
-                    <input class="float-right form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                    <label class="form-check-label px-4" for="flexRadioDefault2">
-                      مورد دوم
-                    </label>
-                  </div> --}}
+
                   {{-- @auth --}}
                   <div class="d-flex align-items-baseline justify-content-between">
                       <input type="submit" class="btn btn-primary mt-3 mx-3" value="ثبت رای">

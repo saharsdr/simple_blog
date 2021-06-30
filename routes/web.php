@@ -36,6 +36,9 @@ Route::get('/', function () {
 });
 Route::get('/poll/{id}', [PollController::class,'detail']);
 
+Route::get('/edit/poll/{id}', [PollController::class,'editable']);
+Route::post('/edit/poll/{id}', [PollController::class,'edit'])->name('edit');
+
 Route::get('/hom', function () {
     return view('users.article');
 });
