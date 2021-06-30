@@ -12,7 +12,8 @@
   
     
     <div class=" w-100 px-5 d-flex justify-content-center">
-        <form class=" w-75 text-justify mt-5">
+        <form class=" w-75 text-justify mt-5" action="{{ route('create_article') }}" method="POST">
+            @csrf
             <div class="form-floating  mt-5 mb-3 " >
                 <input type="text" class="w-100 form-control bg-light border-2  p-4  @error('title') border-red-500 @enderror" name="title" id="title" placeholder="موضوع">
                 <label for="title" class="rtl">عنوان</label>
@@ -22,10 +23,9 @@
                     </div>
                 @enderror
             </div>
-            <div id="editor">
-                <p></p>
-                <p></p>
-            </div>
+            <textarea name="text" id="editor">
+                hello
+            </textarea>
             <input type="submit" class="btn btn-primary m-4" value="ثبت">
 
         </form>

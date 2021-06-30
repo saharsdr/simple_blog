@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LoguotController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PollController;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,9 +47,8 @@ Route::post('/edit/poll/{id}', [PollController::class,'edit'])->name('edit');
 Route::get('/hom', function () {
     return view('users.article');
 });
-Route::get('/new/article', function () {
-    return view('users.new_article');
-});
+Route::get('/new/article', [ArticleController::class,'index'])->name('new_article');
+Route::post('/new/article', [ArticleController::class,'store'])->name('create_article');
 
 Route::get('/edit/poll', function () {
     return view('users.edit_poll');
