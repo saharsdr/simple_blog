@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -54,6 +55,7 @@ class ArticleController extends Controller
     }
 
     public function detail(Article $id){
-        return view('users.article',['id'=>$id]);
+        $comments = Comment::all()->where('post_id',$id->post_id);
+        return view('users.article',['id'=>$id , 'comments'=>$comments]);
     }
 }

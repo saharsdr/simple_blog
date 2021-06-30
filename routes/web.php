@@ -38,13 +38,15 @@ Route::get('/', function () {
     return view('users.home');
 });
 Route::get('/poll/{id}', [PollController::class,'detail']);
-Route::post('poll/{id}',[CommentController::class,'new_comment'])->name('new_comment');
+Route::post('poll/{id}',[CommentController::class,'poll_new_comment'])->name('poll_new_comment');
 
 Route::get('/edit/poll/{id}', [PollController::class,'editable']);
 Route::post('/edit/poll/{id}', [PollController::class,'edit'])->name('edit');
 
 
 Route::get('/article/{id}',[ArticleController::class,'detail']);
+Route::post('/article/{id}',[CommentController::class,'article_new_comment'])->name('article_new_comment');
+
 Route::get('/new/article', [ArticleController::class,'index'])->name('new_article');
 Route::post('/new/article', [ArticleController::class,'store'])->name('create_article');
 

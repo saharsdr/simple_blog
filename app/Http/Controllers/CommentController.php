@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Comment;
 use App\Models\Poll;
 use Illuminate\Http\Request;
@@ -9,10 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function new_comment(Request $req, Poll $id){
-        
-
-        
+    
+    public function new_comment(Request $req, $id){
         $commnet=new Comment;
         $this->validate($req,[
             'comment_content'=>'required'
@@ -37,5 +36,12 @@ class CommentController extends Controller
         
         $commnet->save();
         return back();
+    }
+    public function poll_new_comment(Request $req, Poll $id){      
+        return $this->new_comment($req,$id);
+    }
+
+    public function article_new_comment(Request $req, Article $id){        
+        return $this->new_comment($req,$id);
     }
 }

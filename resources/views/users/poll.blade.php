@@ -56,7 +56,7 @@
             @endforeach
             
             
-            <form action="{{ route('new_comment',$id->id) }}" class="mt-5"  method="post">
+            <form action="{{ route('poll_new_comment',$id->id) }}" class="mt-5"  method="post">
                 @csrf
                 <h4 class="py-3">نظر جدید</h4>
                 @guest
