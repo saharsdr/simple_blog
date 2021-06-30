@@ -36,4 +36,20 @@ class ArticleController extends Controller
 
         return redirect(route('new_article'));
     }
+
+    public function editable(Article $id){
+        return view('users.edit_article',['article' => $id]);
+    }
+
+    public function edit_article(Request $req , Article $id){
+        
+        $this->validate($req , [
+            'title'=>'required|max:500',
+            'text'=>'required'
+        ]);
+        $id->title=$req->title;
+        $id->text=$req->text;
+        $id->save();
+        return back();
+    }
 }

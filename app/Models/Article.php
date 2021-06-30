@@ -9,8 +9,8 @@ class Article extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['mediumText', 'post_id'];
-    protected $guarded = ['id','updated_at','created_at'];
+    protected $fillable = ['text', 'title', 'post_id'];
+    protected $guarded = ['id'];
 
     public function post(){
         return $this->belongsTo('App\Models\Post');
