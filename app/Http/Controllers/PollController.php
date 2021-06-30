@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Poll;
 use App\Models\Post;
 use App\Models\VoteChoise;
@@ -11,12 +12,14 @@ use Illuminate\Support\Facades\Auth;
 class PollController extends Controller
 {
     public function index(){
+        
         return view('users.new_poll');
     }
 
     public function detail(Poll $id){
+        $comments = Comment::all()->where('post_id',$id->post_id);
         $choises=$id->votechoises;
-        return view('users.poll',['id'=>$id , 'choises'=>$choises]);
+        return view('users.poll',['id'=>$id , 'choises'=>$choises, 'comments'=>$comments]);
     }
 
     public function editable(Poll $id){
