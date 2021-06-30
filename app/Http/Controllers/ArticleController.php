@@ -52,4 +52,8 @@ class ArticleController extends Controller
         $id->save();
         return back();
     }
+
+    public function detail(Article $id){
+        return view('users.article',['id'=>$id]);
+    }
 }

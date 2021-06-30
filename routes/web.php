@@ -44,18 +44,13 @@ Route::get('/edit/poll/{id}', [PollController::class,'editable']);
 Route::post('/edit/poll/{id}', [PollController::class,'edit'])->name('edit');
 
 
-Route::get('/hom', function () {
-    return view('users.article');
-});
+Route::get('/article/{id}',[ArticleController::class,'detail']);
 Route::get('/new/article', [ArticleController::class,'index'])->name('new_article');
 Route::post('/new/article', [ArticleController::class,'store'])->name('create_article');
 
 Route::get('/edit/article/{id}', [ArticleController::class,'editable']);
 Route::post('/edit/article/{id}', [ArticleController::class,'edit_article'])->name('edit_article');
 
-Route::get('/edit/poll', function () {
-    return view('users.edit_poll');
-});
 Route::get('/profile', function () {
     return view('users.profile');
 });

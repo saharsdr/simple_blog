@@ -5,21 +5,33 @@
 @endsection
 
 @section('content')
+    <style>
+        :root {
+        --ck-z-default: 100;
+        --ck-z-modal: calc( var(--ck-z-default) + 999 );
+        }
+        .ck-content .table {
+            width: auto;
+        }
+    </style>
+    
+
     <div class="d-flex justify-content-center mt-5 mb-3 " >
         <h1>
-            This is title of the Article
+            {{$id->title}}
         </h1>
     </div>
     <div class="px-5 d-flex justify-content-center">
         <p class="text-muted fs-5">
-            Time
+            {{$id->created_at}}
         </p>
     </div>
     <div class=" w-100 px-5 d-flex justify-content-center">
         <div class="w-75 text-justify">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, officiis! Cupiditate sequi reprehenderit, cum, distinctio nam non ipsam reiciendis doloremque minima, facere voluptatem magni. Nemo enim doloribus sit at aliquam.
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic quod porro nostrum obcaecati. Sunt aut, magni, tenetur inventore voluptas earum dolorem culpa repellendus incidunt eius non eveniet explicabo sapiente sit.
-                </p>
+            <?php
+                $data = $id->text;
+            ?>  
+            <?= $data ?>
         </div>
     </div>
     <div  class="w-100 px-5 pb-5 d-flex justify-content-center">
@@ -95,5 +107,19 @@
             </form>
         </div>
     </div>
-    ckeditor5-build-classic
+    
+    <script>
+        
+        setTimeout(table_class, 10);
+        function table_class() {
+            var tables=document.getElementsByTagName('table');
+            for (let i = 0; i < tables.length; i++) {
+                tables[i].classList.add('table');
+            } 
+        }
+    </script>
+
+    {{-- <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/translations/de.js"></script>
+    <script src="{{url('js/script.js')}}"></script> --}}
 @endsection
