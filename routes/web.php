@@ -36,7 +36,8 @@ Route::post('/new/poll', [PollController::class,'store']);
 
 Route::get('/', function () {
     return view('users.home');
-});
+})->name('home');
+
 Route::get('/poll/{id}', [PollController::class,'detail']);
 Route::post('poll/{id}',[CommentController::class,'poll_new_comment'])->name('poll_new_comment');
 

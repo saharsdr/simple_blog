@@ -26,7 +26,7 @@
                   <a class="nav-link active p-2 text-white" aria-current="page" href="#"><i class="fa fa-arrow-right p-3" aria-hidden="true"></i> قبلی</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active p-2 text-white" aria-current="page" href="#">بازگشت به خانه<i class="fa fa-home p-3" aria-hidden="true"></i></a>
+                  <a class="nav-link active p-2 text-white" aria-current="page" href="{{route('home')}}">بازگشت به خانه<i class="fa fa-home p-3" aria-hidden="true"></i></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link active p-2 text-white" aria-current="page" href="#">بعدی <i class="fa fa-arrow-left p-3" aria-hidden="true"></i></a>

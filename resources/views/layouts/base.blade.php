@@ -26,7 +26,7 @@
                 <a class="navbar-brand mx-4" href="#">انجمن علمی کامپیوتر</a>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                    <a class="nav-link" href="#">خانه</a>
+                    <a class="nav-link" href="{{route('home')}}">خانه</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="#">مطالب</a>
