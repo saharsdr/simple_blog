@@ -55,7 +55,9 @@ class ArticleController extends Controller
     }
 
     public function detail(Article $id){
+        $likes=$id->post->likes;
+        $likes=count($likes);
         $comments = Comment::all()->where('post_id',$id->post_id);
-        return view('users.article',['id'=>$id , 'comments'=>$comments]);
+        return view('users.article',['id'=>$id , 'comments'=>$comments , 'likes'=>$likes ]);
     }
 }

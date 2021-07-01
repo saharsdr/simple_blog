@@ -6,8 +6,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LoguotController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PollController;
-use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +48,9 @@ Route::post('/edit/poll/{id}', [PollController::class,'edit'])->name('edit');
 Route::get('/article/{id}',[ArticleController::class,'detail']);
 Route::post('/article/{id}',[CommentController::class,'article_new_comment'])->name('article_new_comment');
 
+Route::get('like/article/{id}',[LikeController::class,'article_like'])->name('article_like')->middleware('auth');
+Route::get('like/poll/{id}',[LikeController::class,'poll_like'])->name('poll_like')->middleware('auth');
+
 Route::get('/new/article', [ArticleController::class,'index'])->name('new_article');
 Route::post('/new/article', [ArticleController::class,'store'])->name('create_article');
 
@@ -57,3 +60,4 @@ Route::post('/edit/article/{id}', [ArticleController::class,'edit_article'])->na
 Route::get('/profile', function () {
     return view('users.profile');
 });
+

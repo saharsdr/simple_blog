@@ -36,7 +36,9 @@
     </div>
     <div  class="w-100 px-5 pb-5 d-flex justify-content-center">
         <div class="w-50 text-justify pt-5 mt-4">
-           
+            <div class="d-flex align-items-baseline justify-content-end">
+                <a href="{{route('article_like',[$id->id])}}"><span class="badge bg-danger rounded-pill mx-3 p-2 ltr"> <i class="fa fa-thumbs-up"></i> {{ $likes }} </span></a>
+              </div>
         </div>
     </div>
     <div  class="w-100 px-5 d-flex justify-content-center">

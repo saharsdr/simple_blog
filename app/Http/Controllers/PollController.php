@@ -17,9 +17,11 @@ class PollController extends Controller
     }
 
     public function detail(Poll $id){
+        $likes=$id->post->likes;
+        $likes=count($likes);
         $comments = Comment::all()->where('post_id',$id->post_id);
         $choises=$id->votechoises;
-        return view('users.poll',['id'=>$id , 'choises'=>$choises, 'comments'=>$comments]);
+        return view('users.poll',['id'=>$id , 'choises'=>$choises, 'comments'=>$comments, 'likes'=>$likes ]);
     }
 
     public function editable(Poll $id){

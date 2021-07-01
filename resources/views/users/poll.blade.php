@@ -32,12 +32,12 @@
                     </div>
                 @endforeach
 
-                  {{-- @auth --}}
-                  <div class="d-flex align-items-baseline justify-content-between">
+                  
+                    <div class="d-flex align-items-baseline justify-content-between">
                       <input type="submit" class="btn btn-primary mt-3 mx-3" value="ثبت رای">
-                      <a href=""><span class="badge bg-danger rounded-pill mx-3 p-2"> <i class="fa fa-thumbs-up"></i> 15 </span></a>
+                      <a href="{{route('poll_like',[$id->id])}}"><span class="badge bg-danger rounded-pill mx-3 p-2 ltr"> <i class="fa fa-thumbs-up"></i> {{ $likes }} </span></a>
                     </div>
-                  {{-- @endauth --}}
+                  
             </form>
         </div>
     </div>
