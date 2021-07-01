@@ -39,6 +39,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/poll/{id}', [PollController::class,'detail']);
+Route::post('/poll/vote/{id}', [PollController::class,'vote_poll'])->name('vote_poll')->middleware('auth');
 Route::post('poll/{id}',[CommentController::class,'poll_new_comment'])->name('poll_new_comment');
 
 Route::get('/edit/poll/{id}', [PollController::class,'editable']);

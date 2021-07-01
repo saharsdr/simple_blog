@@ -12,11 +12,21 @@ class LikeController extends Controller
 {
     public function like($id){
         $user = Auth::user();
-        $like = new Like([
-            'user_id'=>$user->id,
-            'post_id'=>$id->post_id
-        ]);
-        $like->save();
+        $flaq=true;
+        foreach($id->post->likes as $like){
+            if($like->user_id==$user->id){
+                $flaq=false;
+                break;
+            }
+        }
+
+        if($flaq){
+            $like = new Like([
+                'user_id'=>$user->id,
+                'post_id'=>$id->post_id
+            ]);
+            $like->save();
+        }
         return back();
     }
 

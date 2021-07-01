@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Poll;
 use App\Models\Post;
+use App\Models\Vote;
 use App\Models\VoteChoise;
+use Facade\FlareClient\Flare;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\Console\Input\Input;
+use Symfony\Component\Console\Input\InputOption;
 
 class PollController extends Controller
 {
@@ -90,5 +94,28 @@ class PollController extends Controller
         }
         
         return redirect('/');
+    }
+
+    public function vote_poll(Request $req, Poll $id){
+        
+        $user=Auth::user();
+        $flaq=false;
+        foreach ($user->votes as $item) {
+            if (VoteChoise::all()->find($item->vote_choise_id)->poll_id == $id->id){
+                $flaq=true;
+                break;
+            }
+        } 
+        if(!$flaq){
+            if($req->choise_id[0]!==null){
+                $vote=new Vote([
+                    'user_id'=>$user->id,
+                    'vote_choise_id'=>$req->choise_id[0]
+                ]);
+                $vote->save();
+            }
+        }
+        return back();
+        
     }
 }

@@ -22,21 +22,21 @@
     </div>
     <div  class="w-100 px-5 pb-5 d-flex justify-content-center">
         <div class="w-50 text-justify pt-5 mt-4">
-            <form action="" method="post">
+            <form action="{{route('vote_poll',$id->id)}}" method="post">
+                @csrf
                 @foreach ($choises as $choise)
                     <div class="form-check shadow p-3 mb-3 bg-body rounded">
-                        <input class="float-right form-check-input" type="radio" name="choise_id[]" id="{{$choise->id}}">
+                        <input class="float-right form-check-input" type="radio" name="choise_id[]" value="{{$choise->id}}" id="{{$choise->id}}">
                         <label class="form-check-label px-4" for="{{$choise->id}}">
                             {{$choise->choise}}
                         </label>
                     </div>
                 @endforeach
-
                   
-                    <div class="d-flex align-items-baseline justify-content-between">
-                      <input type="submit" class="btn btn-primary mt-3 mx-3" value="ثبت رای">
-                      <a href="{{route('poll_like',[$id->id])}}"><span class="badge bg-danger rounded-pill mx-3 p-2 ltr"> <i class="fa fa-thumbs-up"></i> {{ $likes }} </span></a>
-                    </div>
+                <div class="d-flex align-items-baseline justify-content-between">
+                  <input type="submit" class="btn btn-primary mt-3 mx-3" value="ثبت رای">
+                  <a href="{{route('poll_like',[$id->id])}}"><span class="badge bg-danger rounded-pill mx-3 p-2 ltr"> <i class="fa fa-thumbs-up"></i> {{ $likes }} </span></a>
+                </div>
                   
             </form>
         </div>
