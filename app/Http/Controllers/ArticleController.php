@@ -25,8 +25,8 @@ class ArticleController extends Controller
         $post=new Post;
         $post->group_id=2020;
         $post->user_id=$user->id;
-        $post->is_article=false;
-        $post->is_poll=true;
+        $post->is_article=true;
+        $post->is_poll=false;
         $post->save();
 
         $article=new Article;
