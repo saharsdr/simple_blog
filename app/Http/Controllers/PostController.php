@@ -21,12 +21,29 @@ class PostController extends Controller
                 $post->title=$post->article->title;
             }
         }
-        // dd($posts);
         return view('admin.posts_list',['posts'=>$posts]);
+    }
+    public function public_post_list(){
+        $posts=Post::all();
+        
+        foreach ($posts as $post) {
+            if($post->is_poll===1){
+                $post->title=$post->poll->title;
+            }
+            else if($post->is_article===1){
+                $post->title=$post->article->title;
+            }
+        }
+        return view('users.home',['posts'=>$posts]);
     }
 
     public function admin_post_delete(Post $id){
         $id->is_deleted=1;
+        $id->save();
+        return back();
+    }
+    public function admin_post_recovery(Post $id){
+        $id->is_deleted=0;
         $id->save();
         return back();
     }

@@ -10,6 +10,6 @@ class LoguotController extends Controller
 {
     public function store(){
         Auth::logout();
-        return redirect()->route('dashboard');
+        return redirect()->route('home');
     }
 }

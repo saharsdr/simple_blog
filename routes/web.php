@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/',[PostController::class,'public_post_list'] )->name('home');
 
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 
@@ -35,9 +36,6 @@ Route::post('/register',[RegisterController::class,'store']);
 Route::get('/new/poll', [PollController::class,'index'])->name('create_poll');
 Route::post('/new/poll', [PollController::class,'store']);
 
-Route::get('/', function () {
-    return view('users.home');
-})->name('home');
 
 Route::get('/poll/{id}', [PollController::class,'detail'])->name('poll_show');
 Route::post('/poll/vote/{id}', [PollController::class,'vote_poll'])->name('vote_poll')->middleware('auth');
@@ -64,6 +62,7 @@ Route::get('/profile', function () {
 });
 Route::get('/admin/posts', [PostController::class,'admin_post_list']);
 Route::get('/admin/post/delete/{id}',[PostController::class,'admin_post_delete'])->name('post_delete');
+Route::get('/admin/post/recovery/{id}',[PostController::class,'admin_post_recovery'])->name('post_recovery');
 
 
 

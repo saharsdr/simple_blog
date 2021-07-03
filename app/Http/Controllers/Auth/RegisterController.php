@@ -40,6 +40,6 @@ class RegisterController extends Controller
         Auth::attempt($req->only('email','password'));
 
         // redirect
-        return redirect()->route('dashboard');
+        return redirect()->route('home');
     }
 }

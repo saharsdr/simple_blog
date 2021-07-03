@@ -24,6 +24,16 @@
                             @if ($post->is_article===1)
                                 <a class="text-decoration-none text-dark" href="{{route('article_show',$post->article->id)}}">{{$post->title}}</a>
                             @endif  
+                            <div class="position-absolute top-0 start-0 fs-6">
+                                @if ($post->is_poll===1)
+                                    <a href="{{ route('poll_editable',$post->poll->id)}}" class="card-link">ویرایش</a>
+                                    <a href="{{ route('post_delete',$post->id)}}" class="card-link">حذف</a>
+                                @endif
+                                @if ($post->is_article===1)
+                                    <a href="{{ route('article_editable',$post->article->id)}}" class="card-link">ویرایش</a>
+                                    <a href="{{ route('post_delete',$post->id)}}" class="card-link">حذف</a>   
+                                @endif
+                            </div>
                         @else
                             @if ($post->is_poll===1)
                                 <a class="text-decoration-none text-secondary" href="{{route('poll_show',$post->poll->id)}}">{{$post->title}}  <span>(حذف شده)</span></a>
@@ -31,6 +41,16 @@
                             @if ($post->is_article===1)
                                 <a class="text-decoration-none text-secondary" href="{{route('article_show',$post->article->id)}}">{{$post->title}}  <span>(حذف شده)</span></a>
                             @endif
+                            <div class="position-absolute top-0 start-0 fs-6">
+                                @if ($post->is_poll===1)
+                                    <a href="{{ route('poll_editable',$post->poll->id)}}" class="card-link">ویرایش</a>
+                                    <a href="{{ route('post_recovery',$post->id)}}" class="card-link">بازگردانی</a>
+                                @endif
+                                @if ($post->is_article===1)
+                                    <a href="{{ route('article_editable',$post->article->id)}}" class="card-link">ویرایش</a>
+                                    <a href="{{ route('post_delete',$post->id)}}" class="card-link">حذف</a>   
+                                @endif
+                            </div>
                         @endif
                         
                         @if ($post->is_poll===1)
@@ -41,20 +61,7 @@
                         @endif
                       
                     </h5>
-                <h6 class="card-subtitle text-muted">{{$post->created_at}}</h6>
-            
-                <div class="position-absolute top-0 start-0 ">
-
-                    @if ($post->is_poll===1)
-                        <a href="{{ route('poll_editable',$post->poll->id)}}" class="card-link">ویرایش</a>
-                        <a href="{{ route('post_delete',$post->id)}}" class="card-link">حذف</a>
-                    @endif
-                    @if ($post->is_article===1)
-                        <a href="{{ route('article_editable',$post->article->id)}}" class="card-link">ویرایش</a>
-                        <a href="{{ route('post_delete',$post->id)}}" class="card-link">حذف</a>   
-                    @endif
-                      
-                  </div>
+                    <h6 class="card-subtitle text-muted">{{$post->created_at}}</h6>
                 </div>
             </div>
             @endforeach
