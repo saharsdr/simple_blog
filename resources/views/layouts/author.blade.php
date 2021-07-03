@@ -4,6 +4,7 @@
 @endsection
 @section('new_post_navbar')
     @auth
+    @yield('admin_navbar')
     <li class="nav-item">
         <a class="nav-link" href="{{route('new_article')}}">افزودن مقاله</a>
     </li>

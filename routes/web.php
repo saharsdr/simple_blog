@@ -9,6 +9,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,12 +59,16 @@ Route::post('/new/article', [ArticleController::class,'store'])->name('create_ar
 Route::get('/edit/article/{id}', [ArticleController::class,'editable'])->name('article_editable');
 Route::post('/edit/article/{id}', [ArticleController::class,'edit_article'])->name('edit_article');
 
-Route::get('/profile', function () {
-    return view('users.profile');
-});
+Route::get('/profile/{user}',[UserController::class,'profile'])->name('profile');
 Route::get('/admin/posts', [PostController::class,'admin_post_list'])->name('admin_post_list');
 Route::get('/admin/post/delete/{id}',[PostController::class,'admin_post_delete'])->name('post_delete');
 Route::get('/admin/post/recovery/{id}',[PostController::class,'admin_post_recovery'])->name('post_recovery');
+
+Route::get('admin/users',[UserController::class,'admin_users_list'])->name('admin_users_list');
+Route::get('/admin/user/confrim/{user}',[UserController::class,'admin_confrim_user'])->name('admin_confrim_user');
+Route::get('/admin/user/unconfrim/{user}',[UserController::class,'admin_unconfrim_user'])->name('admin_unconfrim_user');
+Route::get('/admin/user/author/{user}',[UserController::class,'admin_set_user_author'])->name('admin_set_user_author');
+Route::get('/admin/user/manual/{user}',[UserController::class,'admin_unset_user_author'])->name('admin_unset_user_author');
 
 
 

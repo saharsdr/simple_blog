@@ -1,4 +1,4 @@
-@extends('layouts.author')
+@extends('layouts.admin')
 
 @section('page_title')
     Posts
