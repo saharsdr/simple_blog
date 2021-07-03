@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.author')
 
 @section('page_title')
     Posts
@@ -48,7 +48,7 @@
                                 @endif
                                 @if ($post->is_article===1)
                                     <a href="{{ route('article_editable',$post->article->id)}}" class="card-link">ویرایش</a>
-                                    <a href="{{ route('post_delete',$post->id)}}" class="card-link">حذف</a>   
+                                    <a href="{{ route('post_recovery',$post->id)}}" class="card-link">بازگردانی</a>   
                                 @endif
                             </div>
                         @endif

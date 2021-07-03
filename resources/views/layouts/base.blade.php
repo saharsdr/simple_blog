@@ -31,6 +31,7 @@
                     <li class="nav-item">
                     <a class="nav-link" href="#">مطالب</a>
                     </li>
+                    @yield('new_post_navbar')
                 </ul>
               </div>
               <ul class="navbar-nav  mt-2 mt-lg-0 mx-4">
