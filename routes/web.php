@@ -60,7 +60,7 @@ Route::post('/edit/article/{id}', [ArticleController::class,'edit_article'])->na
 Route::get('/profile', function () {
     return view('users.profile');
 });
-Route::get('/admin/posts', [PostController::class,'admin_post_list']);
+Route::get('/admin/posts', [PostController::class,'admin_post_list'])->name('admin_post_list');
 Route::get('/admin/post/delete/{id}',[PostController::class,'admin_post_delete'])->name('post_delete');
 Route::get('/admin/post/recovery/{id}',[PostController::class,'admin_post_recovery'])->name('post_recovery');
 

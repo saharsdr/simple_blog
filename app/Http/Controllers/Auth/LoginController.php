@@ -26,6 +26,11 @@ class LoginController extends Controller
         }
 
         // redirect
-        return redirect()->route('home');
+        if(Auth::user()->type===1){
+            return redirect()->route('admin_post_list');
+        }
+        else{
+            return redirect()->route('home');
+        }
     }
 }
