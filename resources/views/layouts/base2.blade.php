@@ -21,16 +21,12 @@
 
                   
         <nav class="navbar navbar-light bg-charcoal p-0">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-between flex-row w-100">
-                <li class="nav-item">
-                  <a class="nav-link active p-2 text-white" aria-current="page" href="#"><i class="fa fa-arrow-right p-3" aria-hidden="true"></i> قبلی</a>
-                </li>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center flex-row w-100">
+               
                 <li class="nav-item">
                   <a class="nav-link active p-2 text-white" aria-current="page" href="{{route('home')}}">بازگشت به خانه<i class="fa fa-home p-3" aria-hidden="true"></i></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link active p-2 text-white" aria-current="page" href="#">بعدی <i class="fa fa-arrow-left p-3" aria-hidden="true"></i></a>
-                </li>
+                
             </ul>
         </nav>         
                 

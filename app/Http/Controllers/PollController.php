@@ -23,7 +23,7 @@ class PollController extends Controller
     public function detail(Poll $id){
         $likes=$id->post->likes;
         $likes=count($likes);
-        $comments = Comment::all()->where('post_id',$id->post_id);
+        $comments = $id->post->comments->where('is_deleted',0);
         $choises=$id->votechoises;
         return view('users.poll',['id'=>$id , 'choises'=>$choises, 'comments'=>$comments, 'likes'=>$likes ]);
     }

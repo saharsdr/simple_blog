@@ -57,7 +57,7 @@ class ArticleController extends Controller
     public function detail(Article $id){
         $likes=$id->post->likes;
         $likes=count($likes);
-        $comments = Comment::all()->where('post_id',$id->post_id);
+        $comments = $id->post->comments->where('is_deleted',0);
         return view('users.article',['id'=>$id , 'comments'=>$comments , 'likes'=>$likes ]);
     }
 }

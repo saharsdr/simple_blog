@@ -44,4 +44,16 @@ class CommentController extends Controller
     public function article_new_comment(Request $req, Article $id){        
         return $this->new_comment($req,$id);
     }
+
+    public function delete_comment(Comment $id){
+        $id->is_deleted=1;
+        $id->save();
+        return back();
+    }
+    public function recovery_comment(Comment $id){
+        $id->is_deleted=0;
+        $id->save();
+        return back();
+    }
+    
 }

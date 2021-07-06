@@ -63,6 +63,10 @@ Route::get('/profile/{user}',[UserController::class,'profile'])->name('profile')
 Route::get('/admin/posts', [PostController::class,'admin_post_list'])->name('admin_post_list');
 Route::get('/admin/post/delete/{id}',[PostController::class,'admin_post_delete'])->name('post_delete');
 Route::get('/admin/post/recovery/{id}',[PostController::class,'admin_post_recovery'])->name('post_recovery');
+Route::get('/admin/post/{id}/comments',[PostController::class,'admin_comments'])->name('admin_comments');
+
+Route::get('/admin/comment/{id}/delete',[CommentController::class,'delete_comment'])->name('delete_comment');
+Route::get('/admin/comment/{id}/recovery',[CommentController::class,'recovery_comment'])->name('recovery_comment');
 
 Route::get('admin/users',[UserController::class,'admin_users_list'])->name('admin_users_list');
 Route::get('/admin/user/confrim/{user}',[UserController::class,'admin_confrim_user'])->name('admin_confrim_user');
