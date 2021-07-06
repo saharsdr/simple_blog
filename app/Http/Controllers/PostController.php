@@ -9,10 +9,8 @@ use Symfony\Component\CssSelector\Parser\Shortcut\ElementParser;
 
 class PostController extends Controller
 {
-    // Admin part
-    public function admin_post_list(){
+    public function home(){
         $posts=Post::all();
-        
         foreach ($posts as $post) {
             $post->user_name=$post->user->name_first." ".$post->user->name_last;
             if($post->is_poll===1){
@@ -22,20 +20,18 @@ class PostController extends Controller
                 $post->title=$post->article->title;
             }
         }
+        return $posts;
+    }
+
+    // Admin part
+    public function admin_post_list(){
+        $posts=$this->home();
         return view('admin.posts_list',['posts'=>$posts]);
     }
 
     public function public_post_list(){
-        $posts=Post::all();
-        
-        foreach ($posts as $post) {
-            if($post->is_poll===1){
-                $post->title=$post->poll->title;
-            }
-            else if($post->is_article===1){
-                $post->title=$post->article->title;
-            }
-        }
+        $posts=$this->home();
+        $posts=$posts->where('is_deleted',0);
         return view('users.home',['posts'=>$posts]);
     }
 

@@ -25,8 +25,6 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/',[PostController::class,'public_post_list'] )->name('home');
 
-Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
-
 Route::post('/logout',[LoguotController::class,'store'])->name('logout');
 
 Route::get('/login',[LoginController::class,'index'])->name('login');
