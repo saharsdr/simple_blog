@@ -46,11 +46,17 @@ class CommentController extends Controller
     }
 
     public function delete_comment(Comment $id){
+        if(Auth::user()->type!==1){
+            return back();
+        }
         $id->is_deleted=1;
         $id->save();
         return back();
     }
     public function recovery_comment(Comment $id){
+        if(Auth::user()->type!==1){
+            return back();
+        }
         $id->is_deleted=0;
         $id->save();
         return back();

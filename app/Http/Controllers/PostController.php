@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\CssSelector\Parser\Shortcut\ElementParser;
 
 class PostController extends Controller
@@ -26,7 +27,12 @@ class PostController extends Controller
     // Admin part
     public function admin_post_list(){
         $posts=$this->home();
-        return view('admin.posts_list',['posts'=>$posts]);
+        if(Auth::user()->type!==1){
+            return back();
+        }
+        else{
+            return view('admin.posts_list',['posts'=>$posts]);
+        }
     }
 
     public function public_post_list(){
@@ -36,18 +42,27 @@ class PostController extends Controller
     }
 
     public function admin_post_delete(Post $id){
+        if(Auth::user()->type!==1){
+            return back();
+        }
         $id->is_deleted=1;
         $id->save();
         return back();
     }
 
     public function admin_post_recovery(Post $id){
+        if(Auth::user()->type!==1){
+            return back();
+        }
         $id->is_deleted=0;
         $id->save();
         return back();
     }
 
     public function admin_comments(Post $id){
+        if(Auth::user()->type!==1){
+            return back();
+        }
         return view('admin.post_comments',['comments'=>$id->comments]);
     }
 }

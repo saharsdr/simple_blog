@@ -39,11 +39,16 @@ class ArticleController extends Controller
     }
 
     public function editable(Article $id){
+        if(Auth::user()->type===3){
+            return back();
+        }
         return view('users.edit_article',['article' => $id]);
     }
 
     public function edit_article(Request $req , Article $id){
-        
+        if(Auth::user()->type===3){
+            return back();
+        }
         $this->validate($req , [
             'title'=>'required|max:500',
             'text'=>'required'

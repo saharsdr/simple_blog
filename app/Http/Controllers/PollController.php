@@ -29,11 +29,17 @@ class PollController extends Controller
     }
 
     public function editable(Poll $id){
+        if(Auth::user()->type===3){
+            return back();
+        }
         $choises=$id->votechoises;
         return view('users.edit_poll',['id'=>$id , 'choises'=>$choises]);
     }
     
     public function edit(Request $req , Poll $id){
+        if(Auth::user()->type===3){
+            return back();
+        }
         $this->validate($req,[
             'title'=>'required|max:500'
         ]);

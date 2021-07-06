@@ -58,7 +58,8 @@ Route::get('/edit/article/{id}', [ArticleController::class,'editable'])->name('a
 Route::post('/edit/article/{id}', [ArticleController::class,'edit_article'])->name('edit_article');
 
 Route::get('/profile/{user}',[UserController::class,'profile'])->name('profile');
-Route::get('/admin/posts', [PostController::class,'admin_post_list'])->name('admin_post_list');
+
+Route::get('/admin/posts', [PostController::class,'admin_post_list'])->name('admin_post_list')->middleware('auth');
 Route::get('/admin/post/delete/{id}',[PostController::class,'admin_post_delete'])->name('post_delete');
 Route::get('/admin/post/recovery/{id}',[PostController::class,'admin_post_recovery'])->name('post_recovery');
 Route::get('/admin/post/{id}/comments',[PostController::class,'admin_comments'])->name('admin_comments');
