@@ -28,16 +28,14 @@
                     <li class="nav-item active">
                     <a class="nav-link" href="{{route('home')}}">خانه</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">مطالب</a>
-                    </li>
+                    
                     @yield('new_post_navbar')
                 </ul>
               </div>
               <ul class="navbar-nav  mt-2 mt-lg-0 mx-4">
                   @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{route('profile',auth()->user()->id)}}">
                             @php
                                echo auth()->user()->name_first." ".auth()->user()->name_last;
                             @endphp
