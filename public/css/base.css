@@ -4,11 +4,16 @@
     margin: 0;
     padding: 0;
     direction: rtl;
+    /* font-family: 'Vazir', sans-serif; */
     
 }
 
 html{
     box-sizing: border-box;
+    font-family: 'Vazir', sans-serif;
+}
+body{
+    font-family: 'Vazir', sans-serif;
 }
 
 .ltr{
@@ -61,3 +66,4 @@ html{
 .container-fluid{
     padding: 0 !important;
 }
+

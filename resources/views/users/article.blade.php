@@ -49,7 +49,15 @@
                 <div class="card-body">
                   <blockquote class="blockquote mb-0">
                     <p>{{ $item->text }}</p>
-                    <footer class="blockquote-footer">{{ $item->name }}</footer>
+                    <footer class="blockquote-footer">
+                        {{ $item->name }}
+                        @if ($item->user_id)
+
+                            <i class="fa fa-check text-success" aria-hidden="true"></i>
+                        @else
+                            <span class="text-muted"> (مهمان)</span>                            
+                        @endif
+                    </footer>
                   </blockquote>
                 </div>
             </div>

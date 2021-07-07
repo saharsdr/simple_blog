@@ -7,6 +7,8 @@
     <link href="{{url('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{url('css/base.css')}}" rel="stylesheet" type="text/css">
     <link href="{{url('fontawesome/css/all.css')}}" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v29.1.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+    
 
     @yield('links')
 
@@ -17,6 +19,7 @@
     </title>
 </head>
 <body>
+    
     <div class="container-fluid">
 
                   
