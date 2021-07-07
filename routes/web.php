@@ -71,9 +71,13 @@ Route::get('/admin/user/unconfrim/{user}',[UserController::class,'admin_unconfri
 Route::get('/admin/user/author/{user}',[UserController::class,'admin_set_user_author'])->name('admin_set_user_author')->middleware('auth');
 Route::get('/admin/user/manual/{user}',[UserController::class,'admin_unset_user_author'])->name('admin_unset_user_author')->middleware('auth');
 
-Route::get('/admin/group',[GroupController::class,'index'])->name('admin_new_group')->middleware('auth');
-Route::post('/admin/group',[GroupController::class,'store'])->name('admin_store_group')->middleware('auth');
-// Route::delete('/admin/group/{id}/delet',[GroupController::class,'delete'])->name('admin_delete_group')->middleware('auth');
+Route::get('/admin/group',[GroupController::class,'index'])->name('admin_group_list')->middleware('auth');
+Route::get('/admin/new/group',[GroupController::class,'index_new'])->name('admin_new_group')->middleware('auth');
+Route::post('/admin/new/group',[GroupController::class,'store'])->name('admin_store_group')->middleware('auth');
+Route::get('/admin/group/{id}/edit',[GroupController::class,'editable'])->name('admin_editable_group')->middleware('auth');
+Route::post('/admin/group/{id}/edit',[GroupController::class,'edit'])->name('admin_edit_group')->middleware('auth');
+Route::get('/admin/group/{id}/delet',[GroupController::class,'delete'])->name('admin_delete_group')->middleware('auth');
+Route::get('/admin/group/{id}/recovery',[GroupController::class,'recovery'])->name('admin_recovery_group')->middleware('auth');
 // Route::post('/admin/group/posts',[GroupController::class,'posts'])->name('admin_posts_group')->middleware('auth');
 
 
