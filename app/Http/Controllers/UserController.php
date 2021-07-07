@@ -8,19 +8,33 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function user_layout(){
+        $user=Auth::user();
+        if ($user) {
+            if($user->type===2){
+                $layout="layouts.author";
+            }
+            else if($user->type===1){
+                $layout="layouts.admin";
+            }
+        }
+        else{
+            $layout="layouts.base";
+        }
+        return $layout;
+    }
     public function admin_users_list(){
         if(Auth::user()->type!==1){
             return back();
         }
         $users=User::all();
-        return view('admin.users_list',['users'=>$users]);
+        $layout=$this->user_layout();
+        return view('admin.users_list',['users'=>$users, 'layout'=>$layout]);
     }
 
     public function profile(User $user){
-        if(Auth::user()->type!==1 or Auth::user()->id!==$user){
-            return back();
-        }
-        return view('users.profile',['user'=>$user]);
+        $layout=$this->user_layout();
+        return view('users.profile',['user'=>$user, 'layout'=>$layout]);
     }
     public function admin_unconfrim_user(User $user){
         if(Auth::user()->type!==1){
@@ -54,6 +68,5 @@ class UserController extends Controller
         $user->save();
         return back();
     }
-
     
 }

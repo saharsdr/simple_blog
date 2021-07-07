@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends($layout)
 
 @section('page_title')
     Posts

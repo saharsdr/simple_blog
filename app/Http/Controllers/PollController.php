@@ -15,9 +15,24 @@ use Symfony\Component\Console\Input\InputOption;
 
 class PollController extends Controller
 {
+    public function user_layout(){
+        $user=Auth::user();
+        if ($user) {
+            if($user->type===2){
+                $layout="layouts.author";
+            }
+            else if($user->type===1){
+                $layout="layouts.admin";
+            }
+        }
+        else{
+            $layout="layouts.base";
+        }
+        return $layout;
+    }
     public function index(){
-        
-        return view('users.new_poll');
+        $layout=$this->user_layout();
+        return view('users.new_poll',['layout'=>$layout]);
     }
 
     public function detail(Poll $id){
@@ -25,7 +40,8 @@ class PollController extends Controller
         $likes=count($likes);
         $comments = $id->post->comments->where('is_deleted',0);
         $choises=$id->votechoises;
-        return view('users.poll',['id'=>$id , 'choises'=>$choises, 'comments'=>$comments, 'likes'=>$likes ]);
+        $layout=$this->user_layout();
+        return view('users.poll',['id'=>$id , 'layout'=>$layout, 'choises'=>$choises, 'comments'=>$comments, 'likes'=>$likes ]);
     }
 
     public function editable(Poll $id){
@@ -33,7 +49,8 @@ class PollController extends Controller
             return back();
         }
         $choises=$id->votechoises;
-        return view('users.edit_poll',['id'=>$id , 'choises'=>$choises]);
+        $layout=$this->user_layout();
+        return view('users.edit_poll',['id'=>$id , 'choises'=>$choises, 'layout'=>$layout]);
     }
     
     public function edit(Request $req , Poll $id){

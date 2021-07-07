@@ -10,8 +10,24 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
+    public function user_layout(){
+        $user=Auth::user();
+        if ($user) {
+            if($user->type===2){
+                $layout="layouts.author";
+            }
+            else if($user->type===1){
+                $layout="layouts.admin";
+            }
+        }
+        else{
+            $layout="layouts.base";
+        }
+        return $layout;
+    }
     public function index(){
-        return view('users.new_article');
+        $layout=$this->user_layout();
+        return view('users.new_article',['layout'=>$layout]);
     }
 
     public function store(Request $req){
@@ -35,14 +51,15 @@ class ArticleController extends Controller
         $article->post_id=$post->id;
         $article->save();
 
-        return redirect(route('new_article'));
+        return redirect('/');
     }
 
     public function editable(Article $id){
         if(Auth::user()->type===3){
             return back();
         }
-        return view('users.edit_article',['article' => $id]);
+        $layout=$this->user_layout();
+        return view('users.edit_article',['article' => $id , 'layout'=>$layout]);
     }
 
     public function edit_article(Request $req , Article $id){
@@ -56,13 +73,14 @@ class ArticleController extends Controller
         $id->title=$req->title;
         $id->text=$req->text;
         $id->save();
-        return back();
+        return redirect('/');;
     }
 
     public function detail(Article $id){
         $likes=$id->post->likes;
         $likes=count($likes);
         $comments = $id->post->comments->where('is_deleted',0);
-        return view('users.article',['id'=>$id , 'comments'=>$comments , 'likes'=>$likes ]);
+        $layout=$this->user_layout();
+        return view('users.article',['id'=>$id , 'comments'=>$comments , 'likes'=>$likes, 'layout'=>$layout ]);
     }
 }

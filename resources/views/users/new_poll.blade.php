@@ -1,5 +1,4 @@
-@extends('layouts.base')
-
+@extends($layout)
 @section('links')
 @endsection
 
