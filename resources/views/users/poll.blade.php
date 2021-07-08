@@ -37,6 +37,13 @@
                   <input type="submit" class="btn btn-primary mt-3 mx-3" value="ثبت رای">
                   <a href="{{route('poll_like',[$id->id])}}"><span class="badge bg-danger rounded-pill mx-3 p-2 ltr"> <i class="fa fa-thumbs-up"></i> {{ $likes }} </span></a>
                 </div>
+                @if(session('status')!==null)
+                    <div class=" mt-3 alert alert-info alert-dismissible fade show" role="alert">
+                        {{ session('status') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                @endif
+                    
                   
             </form>
         </div>

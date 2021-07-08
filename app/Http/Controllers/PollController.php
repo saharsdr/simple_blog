@@ -137,8 +137,21 @@ class PollController extends Controller
                 ]);
                 $vote->save();
             }
+            return redirect()->back()->with('status', 'ممنون از اینکه شرکت کردید.');
+            // return redirect()->back()->with([
+                //     'success' => true,
+                //     'message' => 'ممنون از اینکه شرکت کردید.',
+                // ]);
+            }
+        else{
+            return redirect()->back()->with('status', 'شما قبلا در این نظرسنجی/رای گیری شرکت کرده بودید.');
+            // return redirect()->back()->with([
+            //     'success' => false,
+            //     'message' => 'شما قبلا در این نظرسنجی/رای گیری شرکت کرده بودید.',
+            // ]);
+
         }
-        return back();
+        // return back();
         
     }
 }
