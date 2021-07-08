@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
     public function index(){
+        Redirect::setIntendedUrl(url()->previous());
         return view('auth.login');
     }
 
@@ -26,7 +29,8 @@ class LoginController extends Controller
         }
 
         // redirect
-        return redirect()->route('home');
+
+        return redirect()->intended(RouteServiceProvider::HOME);
         
     }
 }
