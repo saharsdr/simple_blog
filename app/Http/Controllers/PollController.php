@@ -78,6 +78,9 @@ class PollController extends Controller
             foreach($req->choise_del as $delCh){
                 $delMe=$vote_choises->where('poll_id',$id->id)->where('choise',$delCh)->first();
                 if($delMe!==null){
+                    foreach($delMe->votes as $item ){
+                        $item->delete();
+                    }
                     $delMe->delete();
                 }
             }
@@ -138,20 +141,10 @@ class PollController extends Controller
                 $vote->save();
             }
             return redirect()->back()->with('status', 'ممنون از اینکه شرکت کردید.');
-            // return redirect()->back()->with([
-                //     'success' => true,
-                //     'message' => 'ممنون از اینکه شرکت کردید.',
-                // ]);
-            }
+        }
         else{
             return redirect()->back()->with('status', 'شما قبلا در این نظرسنجی/رای گیری شرکت کرده بودید.');
-            // return redirect()->back()->with([
-            //     'success' => false,
-            //     'message' => 'شما قبلا در این نظرسنجی/رای گیری شرکت کرده بودید.',
-            // ]);
-
         }
-        // return back();
         
     }
 }
