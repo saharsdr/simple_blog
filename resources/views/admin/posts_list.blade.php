@@ -28,6 +28,7 @@
                                 @if ($post->is_poll===1)
                                     <a href="{{ route('poll_editable',$post->poll->id)}}" class="card-link">ویرایش</a>
                                     <a href="{{ route('post_delete',$post->id)}}" class="card-link">حذف</a>
+                                    <a href="{{ route('poll_result',$post->poll->id)}}" class="card-link">نتایج</a>
                                 @endif
                                 @if ($post->is_article===1)
                                     <a href="{{ route('article_editable',$post->article->id)}}" class="card-link">ویرایش</a>
@@ -46,6 +47,7 @@
                                 @if ($post->is_poll===1)
                                     <a href="{{ route('poll_editable',$post->poll->id)}}" class="card-link">ویرایش</a>
                                     <a href="{{ route('post_recovery',$post->id)}}" class="card-link">بازگردانی</a>
+                                    <a href="{{ route('poll_result',$post->poll->id)}}" class="card-link">نتایج</a>
                                 @endif
                                 @if ($post->is_article===1)
                                     <a href="{{ route('article_editable',$post->article->id)}}" class="card-link">ویرایش</a>

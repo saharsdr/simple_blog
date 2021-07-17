@@ -61,6 +61,7 @@ Route::get('/admin/posts', [PostController::class,'admin_post_list'])->name('adm
 Route::get('/admin/post/delete/{id}',[PostController::class,'admin_post_delete'])->name('post_delete')->middleware('auth');
 Route::get('/admin/post/recovery/{id}',[PostController::class,'admin_post_recovery'])->name('post_recovery')->middleware('auth');
 Route::get('/admin/post/{id}/comments',[PostController::class,'admin_comments'])->name('admin_comments')->middleware('auth');
+Route::get('/admin/post/{id}/result',[PollController::class,'admin_poll_result'])->name('poll_result');
 
 Route::get('/admin/comment/{id}/delete',[CommentController::class,'delete_comment'])->name('delete_comment')->middleware('auth');
 Route::get('/admin/comment/{id}/recovery',[CommentController::class,'recovery_comment'])->name('recovery_comment')->middleware('auth');

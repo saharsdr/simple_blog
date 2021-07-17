@@ -147,4 +147,18 @@ class PollController extends Controller
         }
         
     }
+
+    public function admin_poll_result(Poll $id){
+        // dd(12);
+        $result=[];
+        $count=0;
+        foreach ($id->votechoises as $item) {
+
+            array_push($result, [[count($item->votes) ],[$item->choise]]);
+            $count=$count+count($item->votes);
+        } 
+        // dd($result);
+        return view('admin.poll_result',['result'=>$result, 'count'=>$count]);
+    }
 }
+
