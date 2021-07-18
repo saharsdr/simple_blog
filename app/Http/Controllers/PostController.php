@@ -12,6 +12,7 @@ class PostController extends Controller
 {
     public function user_layout(){
         $user=Auth::user();
+        $layout="layouts.base";
         if ($user) {
             if($user->type===2){
                 $layout="layouts.author";
@@ -20,9 +21,9 @@ class PostController extends Controller
                 $layout="layouts.admin";
             }
         }
-        else{
-            $layout="layouts.base";
-        }
+        // else{
+        //     $layout="layouts.base";
+        // }
         return $layout;
     }
     public function home(){
